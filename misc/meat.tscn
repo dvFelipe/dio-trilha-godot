@@ -1,0 +1,77 @@
+[gd_scene load_steps=12 format=3 uid="uid://bw0d2s7sd4sgw"]
+
+[ext_resource type="Texture2D" uid="uid://c1hqw5exgxrns" path="res://addons/Tiny Swords/Resources/Resources/M_Spawn.png" id="1_1xgue"]
+[ext_resource type="Script" path="res://misc/life_regenerator.gd" id="2_8p3ex"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_p74af"]
+atlas = ExtResource("1_1xgue")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_10xa1"]
+atlas = ExtResource("1_1xgue")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c4sa2"]
+atlas = ExtResource("1_1xgue")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hixey"]
+atlas = ExtResource("1_1xgue")
+region = Rect2(384, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_e3t4g"]
+atlas = ExtResource("1_1xgue")
+region = Rect2(512, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ioy70"]
+atlas = ExtResource("1_1xgue")
+region = Rect2(640, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pfo6m"]
+atlas = ExtResource("1_1xgue")
+region = Rect2(768, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3fhen"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p74af")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_10xa1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c4sa2")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hixey")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e3t4g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ioy70")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pfo6m")
+}],
+"loop": false,
+"name": &"default",
+"speed": 10.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vlgwe"]
+radius = 30.0167
+
+[node name="Meat" type="AnimatedSprite2D"]
+position = Vector2(0, -30)
+sprite_frames = SubResource("SpriteFrames_3fhen")
+autoplay = "default"
+script = ExtResource("2_8p3ex")
+regeneration_amount = 20
+
+[node name="Area2D" type="Area2D" parent="."]
+position = Vector2(1, 11)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_vlgwe")
